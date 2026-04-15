@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find . -type f \\\\\\( -name \"*.tsx\" -o -name \"*.ts\" -o -name \"*.css\" \\\\\\) ! -path \"./node_modules/*\" ! -path \"./.next/*\" -exec grep -l \"pink-[0-9]\\\\|#ec4899\\\\|#f472b6\\\\|#f91880\\\\|#be185d\\\\|#9d174d\\\\|#831843\\\\|#fce7f3\" {} \\\\;)",
+      "Bash(find . -type f '\\(' -name '*.tsx' -o -name '*.ts' -o -name '*.css' '\\)' ! -path './node_modules/*' ! -path './.next/*' -exec sed -i -e s/pink-50/blue-50/g -e s/pink-100/blue-100/g -e s/pink-200/blue-200/g -e s/pink-300/blue-300/g -e s/pink-400/blue-400/g -e s/pink-500/blue-500/g -e s/pink-600/blue-600/g -e s/pink-700/blue-700/g -e 's/#ec4899/#3b82f6/g' -e 's/#fce7f3/#dbeafe/g' -e 's/#be185d/#1d4ed8/g' '{}' +)",
+      "Bash(curl -s \"http://localhost:3000/api/debug-profiles?action=status\")",
+      "Bash(curl -s \"http://localhost:3000/api/debug-profiles?action=check-columns\")",
+      "Bash(curl -s \"http://localhost:3000/api/debug-profiles?action=reset\")",
+      "Bash(npx supabase:*)",
+      "Bash(npx tsc:*)",
+      "Bash(curl -s \"http://localhost:3000/api/debug-profiles?action=fix-lobby\")",
+      "Bash(python -m json.tool)",
+      "Bash(grep -E \"types\\\\.\\(ts|tsx\\)$\")",
+      "Bash(grep -E \"\\\\.\\(ts|tsx\\)$\")",
+      "Bash(curl -s \"http://localhost:3000/api/debug-profiles?action=run-migration\")"
+    ]
+  }
+}

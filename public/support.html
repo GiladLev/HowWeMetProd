@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HowWeMet - יוצאים מהלופ. מתחילים להיפגש.</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                    },
+                    colors: {
+                        pink: {
+                            50: '#fdf2f8', 100: '#fce7f3', 200: '#fbcfe8', 300: '#f9a8d4', 
+                            400: '#f472b6', 500: '#ec4899', 600: '#db2777', 700: '#be185d'
+                        },
+                        brand: {
+                            dark: '#0f172a',
+                            light: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .halo-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background-color: #f472b6;
+            opacity: 0.3;
+            animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-brand-dark font-sans overflow-x-hidden selection:bg-pink-200 selection:text-pink-900">
+
+    <header class="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl font-black text-pink-600 tracking-tight">HowWeMet</span>
+            </div>
+            
+            <nav class="hidden md:flex gap-8 text-base font-medium text-gray-600">
+                <a href="#the-problem" class="hover:text-pink-600 transition-colors">למה אנחנו פה?</a>
+                <a href="#how-it-works" class="hover:text-pink-600 transition-colors">איך זה עובד?</a>
+                <a href="#meet-cute" class="hover:text-pink-600 transition-colors">תיאום ציפיות</a>
+                <a href="#game-flow" class="hover:text-pink-600 transition-colors">חוק 10 ההודעות</a>
+                <a href="#support" class="hover:text-pink-600 transition-colors">תמיכה</a>
+            </nav>
+            
+            <button class="bg-brand-dark text-white px-7 py-2.5 rounded-full font-bold text-sm transition-transform hover:scale-105 active:scale-95 shadow-md">
+               להורדה
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] opacity-40 pointer-events-none -z-10 overflow-hidden">
+                <div class="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-pink-200 rounded-full blur-[100px] mix-blend-multiply animate-pulse"></div>
+                <div class="absolute top-[20%] -left-[10%] w-[500px] h-[500px] bg-blue-200 rounded-full blur-[100px] mix-blend-multiply animate-pulse" style="animation-delay: 2s;"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    
+                    <div class="text-center lg:text-right">
+                        <div class="inline-flex items-center justify-center lg:justify-start gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-100 text-pink-600 text-sm font-bold mb-8 mx-auto lg:mx-0 shadow-sm">
+                            <span class="relative flex h-3 w-3">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                            </span>
+                            <span>רשת דייטינג סגורה לסטודנטים בלבד</span>
+                        </div>
+                        <h1 class="text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-6 text-brand-dark">
+                            שורפים זמן בספרייה,<br />
+                            <span class="gradient-text">לא באפליקציות.</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0 font-medium">
+                            HowWeMet היא הרשת הסגורה של הקמפוס. בלי פרופילים מזויפים, בלי שיחות שגוררות שבועות. דייט אמיתי תוך 3 שעות, או שלא קרה כלום.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-colors shadow-xl shadow-pink-200">
+                                <i data-lucide="apple" class="w-6 h-6"></i>
+                                הורדה ל-iPhone
+                            </button>
+                            <button class="bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-900 px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-colors">
+                                <i data-lucide="play" class="w-6 h-6"></i>
+                                הורדה ל-Android
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center lg:justify-end mt-10 lg:mt-0">
+                        <div class="relative w-[320px] h-[640px] bg-white rounded-[40px] shadow-2xl border-[8px] border-brand-dark overflow-hidden flex flex-col items-center justify-center float-animation">
+                            <h2 class="absolute top-12 text-2xl font-black text-brand-dark tracking-tight">HowWeMet</h2>
+                            
+                            <div class="relative w-48 h-48 flex items-center justify-center mt-8">
+                                <div class="halo-ring"></div>
+                                <div class="halo-ring" style="animation-delay: 1.25s;"></div>
+                                <div class="relative z-10 w-40 h-40 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex flex-col items-center justify-center text-white shadow-xl shadow-pink-300/50 cursor-pointer">
+                                    <span class="text-sm font-bold opacity-90 mb-1 tracking-wide">זמין לעוד</span>
+                                    <span class="text-4xl font-black tabular-nums">2:59:54</span>
+                                </div>
+                            </div>
+                            
+                            <div class="absolute bottom-10 w-full px-6">
+                                <div class="glass-card rounded-2xl p-4 flex items-center justify-between shadow-lg">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+                                            <i data-lucide="map-pin" class="text-pink-600 w-6 h-6"></i>
+                                        </div>
+                                        <div class="flex flex-col text-right">
+                                            <span class="text-sm font-bold text-gray-900">4 סטודנטים פנויים</span>
+                                            <span class="text-xs font-medium text-gray-500">מוכנים לקפה עכשיו בדשא</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="the-problem" class="py-24 bg-gray-50 border-y border-gray-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm font-bold mb-4 shadow-sm">
+                        <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                        <span>בינינו? המערכת שבורה</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-black mb-4 text-brand-dark leading-tight">
+                        הדור הכי מחובר בהיסטוריה,<br />
+                        <span class="text-red-500">אבל הכי בודד על המקלדת.</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 font-medium">
+                        כולנו באפליקציות, אבל כולנו מרגישים לבד מול המסך. זה לא אתם, זה האלגוריתם שמעוצב להשאיר אתכם מחוברים אליו, במקום לאנשים.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 relative overflow-hidden group">
+                        <div class="absolute -top-6 -right-6 w-24 h-24 bg-red-50 rounded-full transition-transform group-hover:scale-150 -z-0"></div>
+                        <div class="relative z-10">
+                            <div class="text-5xl font-black text-red-500 mb-4">78%</div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-900">שחיקת סוויפים (Burnout)</h3>
+                            <p class="text-gray-600 leading-relaxed text-base font-medium">
+                                נמאס לנו להחליק אנשים כאילו הם קטלוג. מנגנון הסוויפים עובד כמו מכונת מזל שרק שואבת לכם את הזמן במקום לתת ערך.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 relative overflow-hidden group">
+                        <div class="absolute -top-6 -right-6 w-24 h-24 bg-orange-50 rounded-full transition-transform group-hover:scale-150 -z-0"></div>
+                        <div class="relative z-10">
+                            <div class="text-5xl font-black text-orange-500 mb-4">7/10</div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-900">מלכודת ה"חברים לעט"</h3>
+                            <p class="text-gray-600 leading-relaxed text-base font-medium">
+                                מתוך 10 התכתבויות, 7 לעולם לא יהפכו למפגש אמיתי! השיחות מתארכות, המומנטום דועך, והקשר גווע.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 relative overflow-hidden group">
+                        <div class="absolute -top-6 -right-6 w-24 h-24 bg-purple-50 rounded-full transition-transform group-hover:scale-150 -z-0"></div>
+                        <div class="relative z-10">
+                            <div class="text-5xl font-black text-purple-500 mb-4">0%</div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-900">פרופילים מזויפים</h3>
+                            <p class="text-gray-600 leading-relaxed text-base font-medium">
+                                אנחנו רוצים שתיצאו מהאפליקציה. סביבה נקייה מזיופים שנועדה לייצר מפגשים אותנטיים ובטוחים בקמפוס שלכם.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="py-24 bg-brand-light border-b border-gray-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div class="order-2 lg:order-1">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-bold mb-6">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            <span>איך זה עובד? שלב 1</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 text-brand-dark">
+                            סלקציה בכניסה.<br />
+                            <span class="text-emerald-500">רק סטודנטים אמיתיים.</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-8 font-medium">
+                            כדי לשמור על קהילה סגורה ובטוחה, אי אפשר להירשם עם Gmail או Facebook. הכניסה מותנית בכתובת המייל האוניברסיטאית שלכם בלבד.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="mail" class="w-5 h-5 text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">1. מזינים מייל אקדמי</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">המערכת מזהה אוטומטית סיומות כמו ac.il. או edu.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="key-round" class="w-5 h-5 text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">2. מקבלים קוד אימות</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">בלי סיסמאות שצריך לזכור. קוד חד-פעמי (OTP) נשלח ישירות למייל שלכם.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="user-check" class="w-5 h-5 text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">3. אתם בפנים</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">קהילה נקייה מפרופילים מזויפים, בוטים, או אנשים שלא קשורים לאוניברסיטה.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-emerald-200 rounded-full blur-[80px] opacity-40 -z-10"></div>
+                        
+                        <div class="relative w-[320px] h-[640px] bg-white rounded-[40px] shadow-2xl border-[8px] border-brand-dark overflow-hidden flex flex-col float-animation">
+                            <div class="flex flex-col flex-1 px-6 pt-10 pb-6">
+                                
+                                <div class="w-14 h-14 rounded-2xl bg-pink-50 flex items-center justify-center mb-6">
+                                    <i data-lucide="mail" class="w-7 h-7 text-pink-500"></i>
+                                </div>
+
+                                <h3 class="text-2xl font-bold text-gray-900 leading-snug mb-2">מייל אוניברסיטאי</h3>
+                                <p class="text-sm text-gray-400 leading-relaxed mb-8 font-medium">
+                                    HowWeMet מיועד לסטודנטים בלבד.<br />
+                                    נשתמש במייל כדי לאמת שאתה סטודנט.
+                                </p>
+
+                                <div class="mb-3">
+                                    <label class="text-xs font-semibold text-gray-500 mb-2 block text-right">כתובת מייל</label>
+                                    <div class="flex items-center rounded-2xl border-2 px-4 py-3.5 transition-all border-pink-400 bg-white shadow-sm shadow-pink-100">
+                                        <div class="w-5 h-5 rounded-full bg-pink-500 flex items-center justify-center shrink-0 ml-2">
+                                            <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                                        </div>
+                                        <div class="flex-1 text-left text-sm text-gray-800 font-medium font-sans" dir="ltr">
+                                            student@tau.ac.il
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-2 flex-wrap mb-4 justify-end" dir="ltr">
+                                    <span class="text-xs bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full font-medium">.ac.il</span>
+                                    <span class="text-xs bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full font-medium">.edu</span>
+                                </div>
+
+                                <div class="flex items-start gap-3 mt-auto mb-6">
+                                    <div class="mt-0.5 w-5 h-5 rounded-md border-2 border-pink-500 bg-pink-500 shrink-0 flex items-center justify-center shadow-sm">
+                                        <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                    <p class="text-xs text-gray-500 leading-relaxed font-medium">
+                                        קראתי ואני מסכים/ה <span class="text-pink-500 underline">לתנאי השימוש</span> ול<span class="text-pink-500 underline">מדיניות הפרטיות</span>. HowWeMet אינה מסכימה לתוכן פוגעני...
+                                    </p>
+                                </div>
+
+                                <button class="w-full py-4 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2 bg-pink-500 text-white shadow-lg shadow-pink-200/50 hover:bg-pink-600">
+                                    שלח קוד אימות
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="how-it-works-step-2" class="py-24 bg-white border-b border-gray-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div class="flex justify-center lg:justify-start relative">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-pink-200 rounded-full blur-[80px] opacity-30 -z-10"></div>
+                        
+                        <div class="relative w-[320px] h-[640px] bg-brand-light rounded-[40px] shadow-2xl border-[8px] border-brand-dark overflow-hidden flex flex-col items-center pt-8 px-5 pb-6 float-animation" style="animation-delay: -3s;">
+                            
+                            <div class="w-full mb-8 text-center relative z-10">
+                                <h3 class="text-2xl font-bold text-pink-600 tracking-tight mb-1">HowWeMet</h3>
+                                <p class="text-sm text-pink-500 font-medium flex items-center justify-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse inline-block"></span>
+                                    אתה עכשיו באוויר
+                                </p>
+                            </div>
+
+                            <div class="relative w-52 h-52 flex items-center justify-center mb-6">
+                                <div class="halo-ring"></div>
+                                <div class="halo-ring" style="animation-delay: 1.2s;"></div>
+                                
+                                <svg class="absolute inset-0 w-full h-full transform -rotate-90 drop-shadow-md">
+                                    <circle cx="104" cy="104" r="98" fill="none" stroke="#fce7f3" stroke-width="5" />
+                                    <circle cx="104" cy="104" r="98" fill="none" stroke="#ec4899" stroke-width="5" stroke-dasharray="615" stroke-dashoffset="150" stroke-linecap="round" />
+                                </svg>
+                                
+                                <div class="absolute inset-[10px] bg-gradient-to-b from-pink-400 to-pink-500 rounded-full flex flex-col items-center justify-center text-white shadow-xl shadow-pink-300">
+                                    <span class="text-white/90 text-xs font-semibold tracking-wide mb-1">באוויר</span>
+                                    <span class="text-4xl font-bold tabular-nums leading-none mb-1 drop-shadow-sm">2:59:54</span>
+                                    <span class="text-white/70 text-[10px]">לחץ לסיום</span>
+                                </div>
+                            </div>
+
+                            <p class="text-center text-gray-400 text-sm mb-6 font-medium relative z-10">
+                                אנשים קרובים יכולים לראות אותך
+                            </p>
+
+                            <div class="w-full flex flex-col gap-3 relative z-10">
+                                <div class="w-full bg-white border border-gray-100 rounded-2xl px-4 py-3.5 flex items-center justify-between shadow-sm">
+                                    <div class="flex items-center gap-2 text-pink-500 font-bold text-[13px]">
+                                        <i data-lucide="users" class="w-4 h-4"></i>
+                                        4 אנשים זמינים קרוב אליך
+                                    </div>
+                                    <span class="text-gray-300">‹</span>
+                                </div>
+
+                                <div class="w-full bg-pink-50/80 border border-pink-100 rounded-2xl p-3">
+                                    <p class="text-[11px] font-semibold text-pink-400 mb-2">הסטטוס שלך עכשיו ✨</p>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <div class="bg-white rounded-xl p-2 flex flex-col items-center gap-1.5 border border-pink-100 text-center shadow-sm">
+                                            <span class="text-xl leading-none mt-1">☕</span>
+                                            <span class="text-[9px] font-bold text-gray-600">קפה זריז</span>
+                                        </div>
+                                        <div class="bg-white rounded-xl p-2 flex flex-col items-center gap-1.5 border border-pink-100 text-center shadow-sm">
+                                            <span class="text-xl leading-none mt-1">🎯</span>
+                                            <span class="text-[9px] font-bold text-gray-600">קשר רציני</span>
+                                        </div>
+                                        <div class="bg-white rounded-xl p-2 flex flex-col items-center gap-1.5 border border-pink-100 text-center shadow-sm">
+                                            <span class="text-xl leading-none mt-1">👟</span>
+                                            <span class="text-[9px] font-bold text-gray-600">יאללה עכשיו</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-100 text-pink-700 text-sm font-bold mb-6">
+                            <i data-lucide="power" class="w-4 h-4"></i>
+                            <span>איך זה עובד? שלב 2</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 text-brand-dark">
+                            לוחצים פליי.<br />
+                            <span class="text-pink-500">המונה מתחיל לרוץ.</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-8 font-medium">
+                            נכנסתם לקמפוס ויש לכם קצת זמן פנוי? מעולה. הפעילו את כפתור הזמינות ותוך 3 שעות (גג) אתם כבר בדייט, או שהזמינות נכבית מעצמה.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="bg-brand-light p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="clock-3" class="w-5 h-5 text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">1. טיימר של 3 שעות (FOMO חיובי)</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">אין אצלנו פרופילים שמעלים אבק. מי שאתם רואים על המסך – נמצא פיזית באזור שלכם ומעוניין להיפגש היום.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-brand-light p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="sliders-horizontal" class="w-5 h-5 text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">2. שאלון ציפיות זריז</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">לפני שקופצים למים, עונים על שאלון קצר (קפה או דרינק? קליל או רציני?). מונעים אכזבות ובזבוז זמן.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-brand-light p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="radar" class="w-5 h-5 text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">3. עולים על הרדאר</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">ברגע שלחצתם, הפרופיל שלכם הופך לגלוי לסטודנטים סביבכם. עכשיו רק נשאר לחכות להתאמה ולשבור את הקרח.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="meet-cute" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-bold mb-6">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            <span>הפתרון שלנו: תכל'ס על השולחן</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 text-brand-dark">
+                            שמים הכל על השולחן.<br />
+                            <span class="text-blue-600">שקיפות מהשנייה הראשונה.</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-10 font-medium">
+                            בלי "לאן זורמים". מגדירים מראש, נפגשים על בטוח. כולם יודעים מראש למה הם נכנסים ושלב התכנון נחסך לחלוטין.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex gap-5">
+                                <div class="w-14 h-14 shrink-0 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center text-2xl shadow-sm">☕</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">1. מה בא לכם לעשות?</h4>
+                                    <p class="text-gray-500 mt-1 font-medium">קפה זריז בין שיעורים, דרינק בערב או סתם סיבוב על הדשא.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-5">
+                                <div class="w-14 h-14 shrink-0 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center text-2xl shadow-sm">🎯</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">2. הסטייט אוף מיינד</h4>
+                                    <p class="text-gray-500 mt-1 font-medium">מחפשים קשר רציני? משהו קליל? מונעים אכזבות ובזבוז זמן של שני הצדדים.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-5">
+                                <div class="w-14 h-14 shrink-0 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center text-2xl shadow-sm">⏳</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">3. מתי תכל'ס ניפגש?</h4>
+                                    <p class="text-gray-500 mt-1 font-medium">הכל תופס, העיקר התיאום: "רק שם נעליים", "עוד שעה" או "בואו נתכתב קודם".</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center lg:justify-end">
+                        <div class="relative w-[320px] h-[640px] bg-brand-light rounded-[40px] shadow-2xl border-[8px] border-brand-dark overflow-hidden flex flex-col float-animation">
+                            <div class="px-5 pt-12 pb-4 bg-white border-b border-gray-100">
+                                <div class="flex items-center justify-between mb-5">
+                                    <div class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-400 font-black tracking-widest">3 / 3</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <div class="h-1.5 flex-1 rounded-full bg-pink-500"></div>
+                                    <div class="h-1.5 flex-1 rounded-full bg-pink-500"></div>
+                                    <div class="h-1.5 flex-1 rounded-full bg-pink-500"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-1 px-5 py-8 bg-white">
+                                <h3 class="text-2xl font-black text-gray-900 mb-2 leading-tight">מתי תכל'ס נוח לך שניפגש?</h3>
+                                <p class="text-sm text-gray-400 mb-8 font-medium">בלי לחץ, רק תיאום ציפיות</p>
+
+                                <div class="flex flex-col gap-4">
+                                    <div class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl border-2 border-pink-500 bg-pink-50/50 shadow-sm cursor-pointer">
+                                        <span class="text-3xl">👟</span>
+                                        <p class="flex-1 font-bold text-pink-700 text-lg">יאללה, רק שמה נעליים</p>
+                                        <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center text-white">
+                                            <i data-lucide="check" class="w-4 h-4"></i>
+                                        </div>
+                                    </div>
+                                    <div class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl border-2 border-gray-100 hover:border-gray-300 transition-colors cursor-pointer">
+                                        <span class="text-3xl">⏳</span>
+                                        <p class="flex-1 font-bold text-gray-700 text-lg">תנו לי איזה שעה להתארגן</p>
+                                    </div>
+                                    <div class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl border-2 border-gray-100 hover:border-gray-300 transition-colors cursor-pointer">
+                                        <span class="text-3xl">📱</span>
+                                        <p class="flex-1 font-bold text-gray-700 text-lg">מעדיף/ה להתכתב קצת קודם</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-5 bg-white">
+                                <button class="w-full py-4 rounded-2xl bg-pink-500 text-white font-bold text-base shadow-md hover:bg-pink-600 transition-colors flex justify-center items-center gap-2">
+                                    <i data-lucide="rocket" class="w-5 h-5"></i> צא לדרך!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="how-it-works-step-4" class="py-24 bg-brand-light border-b border-gray-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div class="flex justify-center lg:justify-start relative">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-200 rounded-full blur-[80px] opacity-30 -z-10"></div>
+                        
+                        <div class="relative w-[320px] h-[640px] bg-gray-50 rounded-[40px] shadow-2xl border-[8px] border-brand-dark overflow-hidden flex flex-col float-animation" style="animation-delay: -1.5s;">
+                            
+                            <header class="flex items-center justify-between px-5 pt-10 pb-4 shrink-0 bg-white border-b border-gray-100 relative z-20">
+                                <div>
+                                    <h1 class="text-xl font-bold text-gray-900 leading-none mb-1">זמינים עכשיו</h1>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                                        <span class="text-xs text-green-600 font-medium">8 אנשים זמינים</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="flex items-center gap-1 text-[10px] bg-pink-50 text-pink-500 font-bold px-2.5 py-1.5 rounded-full border border-pink-100">
+                                        ❤️ 10 לייקים נותרו
+                                    </span>
+                                </div>
+                            </header>
+
+                            <div class="flex-1 p-4 overflow-hidden flex flex-col">
+                                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex-1 flex flex-col">
+                                    
+                                    <div class="relative w-full h-[55%] bg-gray-100">
+                                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Profile" class="w-full h-full object-cover" />
+                                        
+                                        <div class="absolute top-2 inset-x-2 flex gap-1 z-10">
+                                            <div class="flex-1 h-1 rounded-full bg-white shadow-sm"></div>
+                                            <div class="flex-1 h-1 rounded-full bg-white/40 shadow-sm"></div>
+                                            <div class="flex-1 h-1 rounded-full bg-white/40 shadow-sm"></div>
+                                        </div>
+
+                                        <div class="absolute top-4 left-3 z-10 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold bg-black/50 backdrop-blur-md text-white shadow-lg">
+                                            <i data-lucide="clock" class="w-3 h-3"></i>
+                                            45 דקות
+                                        </div>
+                                    </div>
+
+                                    <div class="px-4 pt-4 flex flex-col flex-1">
+                                        <h2 class="text-xl font-black text-gray-900 leading-none mb-1.5">
+                                            דנה, 24
+                                        </h2>
+                                        
+                                        <p class="text-sm text-gray-400 flex items-center gap-1.5 mb-4 font-medium">
+                                            <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                                            פסיכולוגיה · אוניברסיטת תל אביב
+                                        </p>
+
+                                        <div class="flex gap-2 flex-wrap mb-auto">
+                                            <div class="flex items-center gap-1 bg-gray-50 border border-gray-100 rounded-xl px-2.5 py-1.5">
+                                                <span class="text-sm leading-none">🍷</span>
+                                                <span class="text-gray-600 text-xs font-bold">דרינק בערב</span>
+                                            </div>
+                                            <div class="flex items-center gap-1 bg-gray-50 border border-gray-100 rounded-xl px-2.5 py-1.5">
+                                                <span class="text-sm leading-none">🌊</span>
+                                                <span class="text-gray-600 text-xs font-bold">מה שזורם</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="pt-4 pb-4">
+                                            <button class="w-full py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-transform active:scale-95 bg-pink-500 text-white shadow-xl shadow-pink-200">
+                                                ❤️ לייק
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-bold mb-6">
+                            <i data-lucide="frame" class="w-4 h-4"></i>
+                            <span>איך זה עובד? שלב 4</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 text-brand-dark">
+                            פרופיל נקי.<br />
+                            <span class="text-indigo-500">רק אתם והווייב.</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-8 font-medium">
+                            בלי פיצ'רים נוצצים, בלי מיני-גיימס ובלי כפתורי סופר-לייק בתשלום. רק תמונות, תחומי עניין, וטיימר שמראה לכם כמה זמן נשאר כדי לעשות צעד.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="eye" class="w-5 h-5 text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">פוקוס על מה שחשוב</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">העיצוב המינימליסטי שם את הבן אדם במרכז. אתם רואים בדיוק מה הוא לומד, מה הוא מחפש, וכמה זמן הוא עוד נמצא בקמפוס.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="heart" class="w-5 h-5 text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">מחליטים בלי לחץ</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">המערכת לא קופצת עליכם. אתם עוברים על פרופיל אחד בכל פעם, בנחת. רק כשיש לייק משני הצדדים – המסך יתעורר לחיים עם התאמה.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    
+        <section id="how-it-works-step-5" class="py-24 bg-white border-b border-gray-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div class="order-2 lg:order-1">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 border border-violet-100 text-violet-700 text-sm font-bold mb-6">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                            <span>איך זה עובד? שלב 5</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 text-brand-dark leading-tight">
+                            שקיפות מלאה.<br />
+                            <span class="text-violet-500">רואים מי עשה לכם לייק.</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-8 font-medium">
+                            בלי משחקי ניחושים ו"התאמות עיוורות". כל מי שסימן אתכם יחכה לכם ברשימת הלייקים. אתם רואים את הפרופיל שלו במלואו ומחליטים – לאשר או לדלג.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="inbox" class="w-5 h-5 text-violet-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">הכוח בידיים שלכם</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">קיבלתם לייק? הוא יופיע אצלכם מיד (כל עוד אתם באזור ובזמן). נכנסים לפרופיל, בודקים אם הווייב מתאים, ומקבלים החלטה.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-violet-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">דחייה שקטה או צ'אט מיידי</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">סימנתם X? הצד השני לא יקבל שום התראה. לחצתם V? הצ'אט נפתח מיידית ואפשר להתחיל לדבר (זוכרים שחוק ה-10 הודעות מתחיל?).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-violet-200 rounded-full blur-[80px] opacity-30 -z-10"></div>
+                        
+                        <div class="relative w-[320px] h-[640px] bg-gray-50 rounded-[40px] shadow-2xl border-[8px] border-brand-dark overflow-hidden flex flex-col float-animation" style="animation-delay: -2s;">
+                            
+                            <div class="px-5 pt-10 pb-3 shrink-0 bg-white relative z-10 border-b border-gray-200">
+                                <h1 class="text-2xl font-black text-gray-900 mb-4">פעילות</h1>
+                                <div class="flex bg-gray-100 rounded-xl p-1 relative">
+                                    <div class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-lg shadow-sm"></div>
+                                    <button class="flex-1 py-1.5 text-sm font-bold text-gray-900 relative z-10">
+                                        שיחות
+                                    </button>
+                                    <button class="flex-1 py-1.5 text-sm font-bold text-violet-600 relative z-10 flex justify-center items-center gap-1.5">
+                                        מי עשה לך לייק
+                                        <span class="bg-violet-500 text-white text-[10px] px-1.5 py-0.5 rounded-full leading-none">2</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex-1 p-4 overflow-y-auto">
+                                <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 overflow-hidden flex flex-col">
+                                    
+                                    <div class="bg-violet-50 px-4 py-2.5 border-b border-violet-100 flex items-center justify-between">
+                                        <div class="flex items-center gap-2 text-violet-700 font-bold text-[13px]">
+                                            <i data-lucide="heart" class="w-4 h-4 fill-violet-500 text-violet-500"></i>
+                                            סימן אותך בלייק
+                                        </div>
+                                        <span class="text-[10px] text-violet-500 font-medium">לפני 3 דקות</span>
+                                    </div>
+
+                                    <div class="relative w-full h-56 bg-gray-100">
+                                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80" alt="עידן" class="w-full h-full object-cover" />
+                                        <div class="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold bg-black/60 backdrop-blur-md text-white shadow-lg">
+                                            <i data-lucide="clock" class="w-3 h-3"></i>
+                                            זמין לעוד 1ש׳ 12ד׳
+                                        </div>
+                                    </div>
+
+                                    <div class="p-4 flex flex-col gap-3">
+                                        <div class="flex items-baseline justify-between">
+                                            <h2 class="text-xl font-black text-gray-900 leading-none">עידן, 26</h2>
+                                            <span class="text-xs text-gray-400 flex items-center gap-1 font-medium">
+                                                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> הפקולטה להנדסה
+                                            </span>
+                                        </div>
+
+                                        <div class="flex gap-2 flex-wrap mt-1">
+                                            <div class="flex items-center gap-1 bg-violet-50/50 border border-violet-100 rounded-xl px-2.5 py-1">
+                                                <span class="text-sm leading-none">☕</span>
+                                                <span class="text-violet-700 text-[11px] font-bold">קפה זריז</span>
+                                            </div>
+                                            <div class="flex items-center gap-1 bg-violet-50/50 border border-violet-100 rounded-xl px-2.5 py-1">
+                                                <span class="text-sm leading-none">🎯</span>
+                                                <span class="text-violet-700 text-[11px] font-bold">קשר רציני</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-6 left-0 w-full px-8 flex justify-between gap-4">
+                                <button class="w-16 h-16 rounded-full bg-white text-gray-400 shadow-xl border border-gray-100 flex items-center justify-center hover:bg-gray-50 hover:text-gray-600 transition-all active:scale-90">
+                                    <i data-lucide="x" class="w-7 h-7"></i>
+                                </button>
+                                <button class="flex-1 h-16 rounded-full bg-violet-500 text-white shadow-xl shadow-violet-200 flex flex-col items-center justify-center hover:bg-violet-600 transition-all active:scale-95 border border-violet-400">
+                                    <span class="font-black text-base">אשר התאמה</span>
+                                    <span class="text-[10px] font-medium opacity-80 mt-0.5">ופתח צ'אט</span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="how-it-works-step-6" class="py-24 bg-brand-light border-b border-gray-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                    <div class="flex justify-center lg:justify-start relative">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-amber-200 rounded-full blur-[80px] opacity-40 -z-10"></div>
+
+                        <div class="relative w-[320px] h-[640px] bg-gray-50 rounded-[40px] shadow-2xl border-[8px] border-brand-dark overflow-hidden flex flex-col float-animation" style="animation-delay: -0.5s;">
+
+                            <div class="bg-white px-4 pt-12 pb-3 border-b border-gray-100 flex items-center justify-between z-10 shrink-0 shadow-sm">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200 shrink-0 shadow-sm border border-gray-100">
+                                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80" alt="עידן" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="font-black text-gray-900 leading-none mb-1">עידן</span>
+                                        <span class="text-[10px] font-black text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-100 self-start">הודעה 2 מתוך 10</span>
+                                    </div>
+                                </div>
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center bg-gray-50 cursor-pointer">
+                                    <i data-lucide="more-vertical" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-1 bg-gray-100 flex">
+                                <div class="w-[20%] h-full bg-gradient-to-l from-amber-400 to-amber-500 rounded-r-full shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
+                            </div>
+
+                            <div class="flex-1 p-4 overflow-y-auto flex flex-col gap-4 bg-[#f8fafc]">
+                                
+                                <div class="bg-white border border-amber-100 rounded-2xl p-4 shadow-sm mx-1 mt-2">
+                                    <div class="flex items-center justify-center gap-1.5 mb-3">
+                                        <span class="text-amber-500 text-lg leading-none">🎲</span>
+                                        <span class="text-xs font-black text-amber-600 tracking-wide">שוברים את הקרח</span>
+                                    </div>
+                                    <p class="text-center text-[13px] font-bold text-gray-800 mb-4 leading-relaxed">
+                                        בשנות ה-30 של המאה ה-19, קטשופ נמכר בארה"ב בתור...
+                                    </p>
+                                    
+                                    <div class="flex flex-col gap-2">
+                                        <div class="bg-amber-50 border-2 border-amber-400 rounded-xl py-2.5 text-center relative overflow-hidden">
+                                            <div class="absolute inset-0 bg-amber-100/50 w-[100%]"></div>
+                                            <span class="relative z-10 text-amber-700 font-bold text-[11px] flex items-center justify-center gap-1">
+                                                תרופה לבעיות עיכול <i data-lucide="check-circle-2" class="w-3.5 h-3.5 fill-amber-400 text-white"></i>
+                                            </span>
+                                        </div>
+                                        <div class="bg-gray-50 border border-gray-200 rounded-xl py-2.5 text-center opacity-60">
+                                            <span class="text-gray-500 font-bold text-[11px]">צבע לשיער</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-center text-[10px] text-amber-600 font-bold mt-3">
+                                        יפה! שניכם צדקתם 🎉
+                                    </p>
+                                </div>
+
+                                <div class="flex flex-col gap-1 items-start mt-2">
+                                    <div class="bg-white border border-gray-100 px-4 py-2.5 rounded-2xl rounded-tr-sm shadow-sm text-[13px] text-gray-800 max-w-[85%] font-medium">
+                                        חחח מאיפה ידעת את זה? 😂
+                                    </div>
+                                    <span class="text-[9px] text-gray-400 font-medium mr-1">14:02</span>
+                                </div>
+
+                                <div class="flex flex-col gap-1 items-end mt-1">
+                                    <div class="bg-amber-500 px-4 py-2.5 rounded-2xl rounded-tl-sm shadow-sm text-[13px] text-white max-w-[85%] font-medium shadow-amber-200">
+                                        יש לי ידע לא שימושי בשפע, תתכונן.
+                                    </div>
+                                    <div class="bg-amber-500 px-4 py-2.5 rounded-2xl rounded-tl-sm rounded-tr-sm shadow-sm text-[13px] text-white max-w-[85%] font-medium shadow-amber-200">
+                                        אז מה ה'תרופה' שלך אחרי יום ארוך?
+                                    </div>
+                                    <span class="text-[9px] text-gray-400 ml-1 flex items-center gap-1 font-medium">
+                                        14:03 <i data-lucide="check-check" class="w-3 h-3 text-blue-400"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-white border-t border-gray-100 shadow-[0_-4px_10px_rgba(0,0,0,0.02)] z-10">
+                                <div class="bg-gray-50 border border-gray-200 rounded-full px-4 py-3 flex items-center justify-between">
+                                    <span class="text-gray-400 text-sm font-medium">הקלד/י הודעה...</span>
+                                    <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center shadow-md shadow-amber-200">
+                                        <i data-lucide="send" class="w-4 h-4 text-white -ml-0.5"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-sm font-bold mb-6">
+                            <i data-lucide="message-circle-question" class="w-4 h-4"></i>
+                            <span>איך זה עובד? שלב 6</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 text-brand-dark leading-tight">
+                            שוברים את הקרח.<br />
+                            <span class="text-amber-500">עם טריוויה לא קשורה.</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-8 font-medium">
+                            שכחו מ"היי, מה קורה?". כל צ'אט נפתח עם שאלת טריוויה קלילה ששניכם צריכים לענות עליה יחד. זה מוריד את המבוכה ונותן נושא לשיחה מהשנייה הראשונה.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="swords" class="w-5 h-5 text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">משחק משותף</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">קצת צחוקים וקצת תחרות עושים פלאים. השאלה הרנדומלית פותחת דלת לשיחה הרבה יותר טבעית, ומשם כבר אפשר לזרום.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="hourglass" class="w-5 h-5 text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-900">המונה מתחיל לדפוק</h4>
+                                    <p class="text-gray-500 mt-1 font-medium text-sm">מעל הצ'אט תראו את מד ההודעות. מרגע תחילת השיחה יש לכם 10 הודעות סך הכל (5 לכל אחד). המטרה? להגיע ישר לעיקר.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+
+        <section class="py-24 bg-brand-dark text-white border-y border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-black mb-4">עובדות לא חשובות שמובילות לשיחות החשובות באמת</h2>
+                    <p class="text-lg text-gray-400 font-medium">ככה המערכת שלנו לוקחת עובדה רנדומלית לגמרי, והופכת אותה לשיחת נפש מרתקת.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gray-800/50 rounded-3xl p-6 border border-gray-700 flex flex-col">
+                        <div class="bg-gray-900 text-gray-300 text-xs font-bold px-3 py-1 rounded-full self-start mb-4 border border-gray-700">שלב 1: עובדה לא חשובה</div>
+                        <h3 class="font-bold text-white mb-3 text-lg leading-snug">בשנות ה-30 של המאה ה-19, קטשופ נמכר בארה"ב בתור...</h3>
+                        <div class="bg-green-900/30 border border-green-800 text-green-400 rounded-xl p-3 text-sm font-bold mb-6">תרופה לבעיות עיכול 💊</div>
+                        <div class="flex-1"></div>
+                        <div class="bg-pink-900/30 text-pink-400 text-xs font-bold px-3 py-1 rounded-full self-start mb-4 border border-pink-800/50">שלב 2: תכל'ס</div>
+                        <div class="bg-gray-900 rounded-2xl p-4 text-gray-300 text-sm font-medium leading-relaxed italic border-r-4 border-pink-500">
+                            "עזוב אותך מקטשופ. מה ה'תרופה' האמיתית שלך אחרי יום לימודים קשוח?"
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800/50 rounded-3xl p-6 border border-gray-700 flex flex-col">
+                        <div class="bg-gray-900 text-gray-300 text-xs font-bold px-3 py-1 rounded-full self-start mb-4 border border-gray-700">שלב 1: עובדה לא חשובה</div>
+                        <h3 class="font-bold text-white mb-3 text-lg leading-snug">לאיזה בעל חיים יש "חבר הכי טוב" והוא חרד כשהם נפרדים?</h3>
+                        <div class="bg-green-900/30 border border-green-800 text-green-400 rounded-xl p-3 text-sm font-bold mb-6">פרות 🐄</div>
+                        <div class="flex-1"></div>
+                        <div class="bg-pink-900/30 text-pink-400 text-xs font-bold px-3 py-1 rounded-full self-start mb-4 border border-pink-800/50">שלב 2: תכל'ס</div>
+                        <div class="bg-gray-900 rounded-2xl p-4 text-gray-300 text-sm font-medium leading-relaxed italic border-r-4 border-pink-500">
+                            "ואם ניקח את זה אלינו - כשאת נכנסת לזוגיות, איזה סוג של צמד אתם בדרך כלל?"
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800/50 rounded-3xl p-6 border border-gray-700 flex flex-col">
+                        <div class="bg-gray-900 text-gray-300 text-xs font-bold px-3 py-1 rounded-full self-start mb-4 border border-gray-700">שלב 1: עובדה לא חשובה</div>
+                        <h3 class="font-bold text-white mb-3 text-lg leading-snug">כמה זמן לוקחת הטיסה המסחרית הקצרה ביותר בעולם?</h3>
+                        <div class="bg-green-900/30 border border-green-800 text-green-400 rounded-xl p-3 text-sm font-bold mb-6">דקה וחצי ✈️</div>
+                        <div class="flex-1"></div>
+                        <div class="bg-pink-900/30 text-pink-400 text-xs font-bold px-3 py-1 rounded-full self-start mb-4 border border-pink-800/50">שלב 2: תכל'ס</div>
+                        <div class="bg-gray-900 rounded-2xl p-4 text-gray-300 text-sm font-medium leading-relaxed italic border-r-4 border-pink-500">
+                            "דקה וחצי זה כלום! עד כמה מהר אתה מסוגל לארגן לעצמך תוכנית ספונטנית לחלוטין?"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="game-flow" class="py-24 bg-gradient-to-b from-white to-pink-50 border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div class="flex justify-center lg:justify-start order-2 lg:order-1">
+                        <div class="relative w-[320px] h-[640px] bg-white rounded-[40px] shadow-2xl border-[8px] border-brand-dark overflow-hidden flex flex-col hover:-translate-y-2 transition-transform duration-500">
+                            
+                            <div class="px-5 pt-12 pb-4 bg-white border-b border-gray-100 flex justify-between items-center z-20">
+                                <div class="flex gap-2 w-28">
+                                    <div class="h-1.5 flex-1 rounded-full bg-pink-500"></div>
+                                    <div class="h-1.5 flex-1 rounded-full bg-pink-500"></div>
+                                    <div class="h-1.5 flex-1 rounded-full bg-pink-500"></div>
+                                </div>
+                                <span class="text-xs font-black text-pink-600 tracking-widest">הודעה 10/10</span>
+                            </div>
+
+                            <div class="absolute inset-0 bg-brand-dark/60 z-30 flex items-center justify-center p-5 backdrop-blur-sm">
+                                <div class="bg-white rounded-[2rem] p-8 w-full text-center shadow-2xl">
+                                    <div class="w-16 h-16 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">🎉</div>
+                                    <h3 class="text-2xl font-black text-gray-900 mb-2">רגע האמת הגיע!</h3>
+                                    <p class="text-base text-gray-500 mb-8 font-medium leading-tight">10 הודעות חלפו. חותכים עניין - יוצאים לדייט או נפרדים כידידים?</p>
+                                    
+                                    <div class="flex flex-col gap-3">
+                                        <button class="w-full py-4 rounded-2xl bg-pink-500 text-white font-bold text-base shadow-md hover:bg-pink-600 transition-colors">
+                                            📱 יאללה, בואו ניפגש
+                                        </button>
+                                        <button class="w-full py-4 rounded-2xl border-2 border-gray-200 text-gray-600 font-bold text-base hover:bg-gray-50 transition-colors">
+                                            👋 היה נחמד, אבל פחות
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-1 lg:order-2">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-sm font-bold mb-6">
+                            <i data-lucide="zap" class="w-4 h-4"></i>
+                            <span>חוק ה-10 הודעות</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 text-brand-dark">
+                            שוברים את הקרח.<br />
+                            <span class="text-purple-600">וחותכים עניין.</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-10 font-medium">
+                            הצ'אט שלנו לא נועד להימשך נצח. במקום "מה קורה?" מייבש, בנינו משחק היכרות חכם שדוחף אתכם להפסיק להתכתב ולהתחיל להיפגש.
+                        </p>
+
+                        <div class="space-y-8">
+                            <div class="flex gap-5">
+                                <div class="w-12 h-12 shrink-0 bg-white border border-gray-200 text-brand-dark rounded-full flex items-center justify-center font-black text-xl shadow-sm">1</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">זורקים עובדה לא חשובה</h4>
+                                    <p class="text-gray-500 mt-1 font-medium">עונים יחד על שאלת טריוויה קלילה. מוריד מגננות ומונע את מבוכת ההודעה הראשונה.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-5">
+                                <div class="w-12 h-12 shrink-0 bg-white border border-gray-200 text-brand-dark rounded-full flex items-center justify-center font-black text-xl shadow-sm">2</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">הופכים לאישי (Projection)</h4>
+                                    <p class="text-gray-500 mt-1 font-medium">העובדה השולית הופכת לשאלה אישית. הדרך הכי טובה לדלג לשיחה מעניינת באמת.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-5">
+                                <div class="w-12 h-12 shrink-0 bg-purple-100 border border-purple-200 text-purple-600 rounded-full flex items-center justify-center font-black text-xl shadow-sm">3</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">הודעה 10: רגע ההכרעה</h4>
+                                    <p class="text-gray-500 mt-1 font-medium">המערכת עוצרת הכל ושואלת: יוצאים או חותכים? בלי אגו, בלי לחשוב פעמיים.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section class="py-24 relative overflow-hidden bg-brand-dark text-white text-center">
+            <div class="absolute inset-0 bg-gradient-to-tr from-pink-600/20 to-blue-600/20"></div>
+            <div class="max-w-3xl mx-auto px-6 relative z-10">
+                <h2 class="text-5xl font-black mb-6">יאללה, מוכנים לדייט הבא שלכם?</h2>
+                <p class="text-xl text-gray-300 mb-10 font-medium">תפסיקו להחליק ימינה על אנשים שמעולם לא תראו. בואו ניפגש בדשא.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-pink-500 hover:bg-pink-600 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-colors shadow-lg shadow-pink-500/30 flex items-center justify-center gap-3">
+                        <i data-lucide="apple" class="w-6 h-6"></i>
+                        הורדה ל-iPhone
+                    </button>
+                    <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-colors flex items-center justify-center gap-3">
+                        <i data-lucide="play" class="w-6 h-6"></i>
+                        הורדה ל-Android
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="support" class="py-24 bg-gray-50 border-t border-gray-200 relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-40 pointer-events-none flex justify-center items-center -z-10">
+                <div class="w-[800px] h-[400px] bg-gradient-to-r from-pink-100 via-blue-100 to-indigo-100 blur-[100px] rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="bg-white/90 backdrop-blur-xl rounded-[3rem] p-10 lg:p-16 shadow-2xl border border-white text-center relative overflow-hidden">
+                    
+                    <div class="absolute -top-10 -right-10 text-6xl opacity-10 rotate-12 pointer-events-none">💡</div>
+                    <div class="absolute -bottom-6 -left-6 text-6xl opacity-10 -rotate-12 pointer-events-none">🎓</div>
+
+                    <div class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-brand-dark text-white text-sm font-bold mb-8 shadow-md">
+                        <i data-lucide="heart-handshake" class="w-4 h-4 text-pink-400"></i>
+                        <span>שלנו ובשבילנו.</span>
+                    </div>
+                    
+                    <h2 class="text-4xl lg:text-5xl font-black mb-6 text-brand-dark leading-tight">
+                        באנו כדי <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-blue-600">להיפגש באמת.</span>
+                    </h2>
+                    
+                    <p class="text-xl text-gray-600 leading-relaxed font-medium mb-12 max-w-2xl mx-auto">
+                        המטרה שלנו פשוטה: לצאת מהמסכים, להכיר יותר אנשים בפקולטה, ועל הדרך למצוא שותפ/ה לחיים. בגלל שזו מערכת שנבנית במיוחד בשבילנו – נשמח לשמוע מכם. 
+                        <strong class="text-gray-900 block mt-2">מה הייתם מוסיפים לאפליקציה כדי שהיא תהיה מושלמת?</strong>
+                    </p>
+
+                    <div class="max-w-2xl mx-auto flex flex-col gap-8">
+                        
+                        <div class="bg-gray-50 rounded-2xl p-2.5 shadow-inner border border-gray-200 flex flex-col sm:flex-row gap-3 transition-all focus-within:ring-4 focus-within:ring-pink-100 focus-within:border-pink-300">
+                            <div class="flex-1 flex items-start gap-3 px-4 py-2">
+                                <i data-lucide="lightbulb" class="w-6 h-6 text-pink-400 shrink-0 mt-1"></i>
+                                <textarea 
+                                    placeholder="הייתי שמח/ה אם תוסיפו אפשרות ל..." 
+                                    class="w-full bg-transparent border-none outline-none resize-none text-gray-700 placeholder-gray-400 font-medium text-base h-12 pt-1"
+                                    rows="1"
+                                ></textarea>
+                            </div>
+                            <button class="bg-brand-dark hover:bg-black text-white px-8 py-3.5 rounded-xl font-bold text-base transition-all active:scale-95 shadow-md flex items-center justify-center gap-2 shrink-0">
+                                <span>שלחו רעיון</span>
+                            </button>
+                        </div>
+
+                        <div class="pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-center gap-2 text-sm font-medium text-gray-500">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="life-buoy" class="w-4 h-4 text-blue-500"></i>
+                                <span>נתקלתם בבאג או צריכים עזרה טכנית?</span>
+                            </div>
+                            <a href="mailto:support@howwemet.com" class="text-blue-600 hover:text-blue-800 underline font-bold transition-colors">
+                                support@howwemet.com
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 text-center border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <span class="text-3xl font-black text-white mb-2 tracking-tight">HowWeMet</span>
+            <p class="mb-8 font-medium">מפסיקים להחליק. מתחילים להיפגש.</p>
+            <div class="flex flex-wrap justify-center gap-6 text-sm mb-8">
+                <a href="#" class="hover:text-white transition-colors">תנאי שימוש (Terms of Service)</a>
+                <a href="#" class="hover:text-white transition-colors">מדיניות פרטיות (Privacy Policy)</a>
+                <a href="#support" class="hover:text-white transition-colors">תמיכה טכנית (App Support)</a>
+            </div>
+            <p class="text-xs opacity-40 font-medium">© 2026 HowWeMet. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
