@@ -4,7 +4,7 @@ import { use, useEffect, useRef, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckCheck, MoreVertical, X } from 'lucide-react';
+import { Send, CheckCheck, MoreVertical, X, ChevronRight } from 'lucide-react';
 import { createClient } from '../../../lib/supabase';
 import { ReportBlockSheet } from '../../../components/ReportBlockSheet';
 import GameFlowManager from '../../../components/games/GameFlowManager';
@@ -78,6 +78,38 @@ export default function ChatRoomPage({ params }: { params: Promise<{ id: string 
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [viewportHeight, setViewportHeight] = useState<number | null>(null);
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const vv = window.visualViewport;
+    if (!vv) {
+      setViewportHeight(window.innerHeight);
+      return;
+    }
+    const update = () => {
+      setViewportHeight(vv.height);
+      setKeyboardOpen(window.innerHeight - vv.height > 120);
+    };
+    update();
+    vv.addEventListener('resize', update);
+    vv.addEventListener('scroll', update);
+    window.addEventListener('resize', update);
+    return () => {
+      vv.removeEventListener('resize', update);
+      vv.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (keyboardOpen) {
+      requestAnimationFrame(() => {
+        bottomRef.current?.scrollIntoView({ block: 'end' });
+      });
+    }
+  }, [keyboardOpen]);
 
   const loadMessages = useCallback(async (targetMatchId: string) => {
     const supabase = createClient();
@@ -245,14 +277,24 @@ export default function ChatRoomPage({ params }: { params: Promise<{ id: string 
 
   return (
     <div
-      // התיקון כאן: חישוב הגובה פחות גובה תפריט הניווט (כברירת מחדל 64px)
-      className="flex flex-col h-[calc(100dvh-64px)] overflow-hidden bg-white relative"
+      className="fixed inset-x-0 top-0 max-w-md mx-auto flex flex-col overflow-hidden bg-white z-40"
+      style={{
+        height: viewportHeight ? `${viewportHeight}px` : '100dvh',
+        paddingBottom: keyboardOpen ? 0 : 'calc(64px + env(safe-area-inset-bottom))',
+      }}
       dir="rtl"
     >
 
       {/* ── Header ── */}
       <header className="shrink-0 bg-white border-b border-gray-100 shadow-sm z-10">
-        <div className="flex items-center gap-3 px-4 pt-3 pb-2">
+        <div className="flex items-center gap-2 px-3 pt-3 pb-2">
+          <button
+            onClick={() => router.push('/matches')}
+            aria-label="חזרה לצ'אטים"
+            className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-500 transition-colors shrink-0"
+          >
+            <ChevronRight size={22} />
+          </button>
           <button
             onClick={() => setShowProfileModal(true)}
             className="flex-1 min-w-0 flex items-center gap-3 rounded-2xl hover:bg-gray-50 transition-colors text-right px-1 py-1"

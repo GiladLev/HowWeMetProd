@@ -49,10 +49,12 @@ export default function GameShell({
         </div>
 
         {/* ── Title ─────────────────────────────────────────── */}
-        <div className="text-center mb-4">
-          <span className="text-3xl mb-1 block">{meta?.emoji}</span>
-          <h2 className="text-xl font-bold tracking-tight text-gray-900">{meta?.title}</h2>
-        </div>
+        {(meta?.emoji || meta?.title) && (
+          <div className="text-center mb-4">
+            {meta?.emoji && <span className="text-3xl mb-1 block">{meta.emoji}</span>}
+            {meta?.title && <h2 className="text-xl font-bold tracking-tight text-gray-900">{meta.title}</h2>}
+          </div>
+        )}
 
         {/* ── Game content OR choosing phase ────────────────── */}
         <AnimatePresence mode="wait">

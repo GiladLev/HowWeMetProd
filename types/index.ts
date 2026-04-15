@@ -184,7 +184,7 @@ export const GAME_TITLES: Record<number, { title: string; emoji: string; descrip
   2:  { title: 'מתי יוצאים?',       emoji: '⚡', description: 'טריוויית בזק — המנצח קובע מתי נפגשים' },
   3:  { title: 'מי משלם?',          emoji: '💣', description: 'הפצצה המתקתקת — המנצח קובע מי משלם' },
   4:  { title: 'מנה ראשונה',        emoji: '🍽️', description: 'תמונה מטושטשת — המנצח בוחר סגנון אוכל' },
-  5:  { title: 'קוד לבוש',          emoji: '👔', description: 'זה או זה — המנצח קובע דרס קוד' },
+  5:  { title: '',                  emoji: '',   description: 'זה או זה — המנצח קובע דרס קוד' },
   6:  { title: 'וייב ולוקיישן',     emoji: '🎵', description: 'תו ראשון — המנצח בוחר סוג מקום' },
   7:  { title: 'איך מגיעים?',       emoji: '🖱️', description: 'מלחמת קליקים — המנצח קובע תחבורה' },
   8:  { title: 'נושא אסור',         emoji: '🤫', description: 'הטאבו שלי — המנצח בוחר נושא טאבו' },
