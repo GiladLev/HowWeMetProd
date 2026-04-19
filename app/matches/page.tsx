@@ -117,9 +117,6 @@ export default function MatchesPage() {
     );
 
     setMatches(items);
-    // #region agent log
-    fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H8',location:'matches/page.tsx:loadMatches',message:'Matches list loaded',data:{matchRowsCount:matchRows?.length ?? 0,visibleMatchesCount:visibleMatches.length,itemsCount:items.length},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
     setLoading(false);
   }, []);
 
@@ -184,7 +181,7 @@ export default function MatchesPage() {
             >
               {/* Avatar */}
               <div className="relative shrink-0">
-                <div className="w-14 h-14 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
+                <div className="relative w-14 h-14 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
                   {match.photoUrls?.[0] ? (
                     <Image src={match.photoUrls[0]} alt={match.firstName} fill className="object-cover" sizes="56px" />
                   ) : (

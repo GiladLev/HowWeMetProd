@@ -93,9 +93,6 @@ export default function Game05ThisOrThat({
     const newMatches = matches + (matched ? 1 : 0);
     const newLives = Math.max(0, lives - lifeLoss);
     const gameOver   = newLives <= 0;
-    // #region agent log
-    fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H4',location:'Game05ThisOrThat.tsx:round-resolution',message:'Game05 round resolved',data:{round,matched,livesBefore:lives,newLives,matchesBefore:matches,newMatches,gameOver},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
 
     const timer = setTimeout(() => {
       if (gameOver) {

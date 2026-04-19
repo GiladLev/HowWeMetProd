@@ -9,6 +9,7 @@ import { createClient } from '../../../lib/supabase';
 import { ReportBlockSheet } from '../../../components/ReportBlockSheet';
 import GameFlowManager from '../../../components/games/GameFlowManager';
 import { MEET_CUTE_LABELS, type GameState, type DatePlan } from '../../../types';
+import { notifyUser } from '../../../lib/push-notify';
 
 interface Message {
   id: string;
@@ -60,6 +61,7 @@ export default function ChatRoomPage({ params }: { params: Promise<{ id: string 
   const router = useRouter();
 
   const [myId, setMyId] = useState<string | null>(null);
+  const [myName, setMyName] = useState<string>('');
   const [otherProfile, setOtherProfile] = useState<OtherProfile | null>(null);
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [loading, setLoading] = useState(true);
@@ -132,6 +134,14 @@ export default function ChatRoomPage({ params }: { params: Promise<{ id: string 
         if (authError) throw new Error('אימות נכשל');
         if (!user) return;
         setMyId(user.id);
+
+        // Fetch sender's name for push notifications
+        const { data: myProfile } = await supabase
+          .from('profiles')
+          .select('first_name')
+          .eq('id', user.id)
+          .single();
+        if (myProfile?.first_name) setMyName(myProfile.first_name);
 
         const { data: match, error: matchError } = await supabase
           .from('matches')
@@ -246,9 +256,16 @@ export default function ChatRoomPage({ params }: { params: Promise<{ id: string 
     const { error: insertError } = await supabase.from('messages').insert({ match_id: matchId, sender_id: myId, text });
     if (insertError) {
       setInput(text);
+    } else if (otherId) {
+      // Notify the other user about the new message
+      notifyUser(otherId, myName ? `${myName} 💬` : 'הודעה חדשה 💬', text.length > 80 ? text.slice(0, 80) + '…' : text, {
+        screen: 'chat',
+        matchId,
+        url: `/chat/${matchId}`,
+      });
     }
     setSending(false);
-  }, [input, sending, myId, matchId]);
+  }, [input, sending, myId, myName, matchId, otherId]);
 
   // ── Loading ────────────────────────────────────────────────────────────────
   if (loading) {

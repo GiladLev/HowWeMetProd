@@ -10,6 +10,7 @@ import type { ProfileRow } from '../../lib/useProfile';
 import type { MeetCute } from '../../types';
 import { createInitialGameState, MEET_CUTE_LABELS } from '../../types';
 import { useAvailabilityStore, useMatchStore } from '../../lib/store';
+import { notifyUser } from '../../lib/push-notify';
 import Link from 'next/link';
 
 // ─── Meet Cute (from live availability selection) ────────────────────────────
@@ -215,9 +216,6 @@ export default function DiscoverPage() {
       );
       setAllProfiles(filtered);
       setProfiles(filtered);
-      // #region agent log
-      fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H7',location:'profiles/page.tsx:loadProfiles',message:'Discover profiles loaded',data:{totalFetched:(data ?? []).length,filteredCount:filtered.length,isAvailableForLikes:isCurrentlyAvailable,likesRemaining:needsReset ? 10 : Math.max(0, 10 - (myProfile?.daily_likes_used ?? 0))},timestamp:Date.now()})}).catch(()=>{});
-      // #endregion
 
       setLoading(false);
     } catch (err: unknown) {
@@ -387,6 +385,13 @@ export default function DiscoverPage() {
             otherPhoto: otherProfile?.photo_urls?.[0] ?? null,
           });
 
+          // Notify the other user about the match
+          notifyUser(profile.id, 'התאמה חדשה! 🎉', 'מישהו לייק אותך בחזרה — יש לכם מאצ\'!', {
+            screen: 'chat',
+            matchId: matchData.id,
+            url: `/chat/${matchData.id}`,
+          });
+
           // Move to next profile
           setProfiles(profiles.slice(1));
           setLiking(null);
@@ -401,6 +406,12 @@ export default function DiscoverPage() {
         .eq('id', myId);
 
       if (updateError) throw updateError;
+
+      // Notify the other user that someone liked them
+      notifyUser(profile.id, 'לייק חדש! ❤️', 'מישהו חדש אוהב את הפרופיל שלך', {
+        screen: 'matches',
+        url: '/profiles',
+      });
 
       setLikesRemaining(likesRemaining - 1);
 

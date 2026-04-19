@@ -42,8 +42,6 @@ export default function PhotosStep() {
   const handleFileChange = async (index: number, file: File | undefined) => {
     if (!file) return;
 
-    const previewUrl = URL.createObjectURL(file);
-    setPhoto(index, previewUrl);
     setUploading((prev) => ({ ...prev, [index]: true }));
 
     try {
@@ -51,7 +49,13 @@ export default function PhotosStep() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('Not authenticated');
 
+      // Compress first (handles HEIC, avoids holding raw multi-MB file in DOM)
       const compressed = await compressImage(file);
+
+      // Show preview from the compressed blob (small, safe for iPad memory)
+      const previewUrl = URL.createObjectURL(compressed);
+      setPhoto(index, previewUrl);
+
       const path = `${user.id}/${index}-${Date.now()}.jpg`;
 
       const { error: uploadError } = await supabase.storage

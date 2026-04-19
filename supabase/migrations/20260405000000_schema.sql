@@ -263,6 +263,10 @@ create policy "Users insert own reports" on public.reported_users
 alter table public.profiles
   add column if not exists location text;
 
+-- ─── Expo Push Token (for native app notifications) ─────────────────────────
+alter table public.profiles
+  add column if not exists expo_push_token text;
+
 -- Enable Realtime for live chat, likes, and availability changes
 alter publication supabase_realtime add table public.messages;
 alter publication supabase_realtime add table public.likes;

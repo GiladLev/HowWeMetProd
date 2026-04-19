@@ -70,11 +70,6 @@ export default function GameFlowManager({
   const currentGame = gameState.currentGame;
   const currentGameData = gameState.games[String(currentGame)];
   const GameComponent = GAME_COMPONENTS[currentGame];
-  useEffect(() => {
-    // #region agent log
-    fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H1',location:'GameFlowManager.tsx:phase-snapshot',message:'Game flow snapshot changed',data:{phase:gameState.phase,currentGame:gameState.currentGame,currentStatus:currentGameData?.status ?? null,hasWinner:!!currentGameData?.winnerId},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
-  }, [gameState.phase, gameState.currentGame, currentGameData?.status, currentGameData?.winnerId]);
 
   const withLiveMeta = useCallback((partial: Partial<GameData>, event: LiveEventMeta['event']) => {
     const currentPlayerData = partial.playerData ?? {};
@@ -154,9 +149,6 @@ export default function GameFlowManager({
   const handleGameComplete = useCallback(
     async (winnerId: string) => {
       const key = String(currentGame);
-      // #region agent log
-      fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H2',location:'GameFlowManager.tsx:handleGameComplete',message:'Game completion requested',data:{gameKey:key,phaseBefore:gameState.phase,winnerProvided:!!winnerId},timestamp:Date.now()})}).catch(()=>{});
-      // #endregion
 
       const completePayload = withLiveMeta({ status: 'choosing', winnerId }, 'finish');
 
@@ -196,9 +188,6 @@ export default function GameFlowManager({
       const currentSequenceIndex = ACTIVE_GAME_SEQUENCE.indexOf(currentGame as (typeof ACTIVE_GAME_SEQUENCE)[number]);
       const isLastGame = currentSequenceIndex === -1 || currentSequenceIndex === ACTIVE_GAME_SEQUENCE.length - 1;
       const nextGame = isLastGame ? currentGame : ACTIVE_GAME_SEQUENCE[currentSequenceIndex + 1];
-      // #region agent log
-      fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H3',location:'GameFlowManager.tsx:handleChoose',message:'Winner choice transition',data:{gameKey:key,isLastGame,nextGame,phaseBefore:gameState.phase,optionLength:option.length},timestamp:Date.now()})}).catch(()=>{});
-      // #endregion
 
       // Optimistic local update
       const optimisticGames = { ...gameState.games };

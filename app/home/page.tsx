@@ -340,11 +340,6 @@ export default function HomePage() {
     return () => clearInterval(id);
   }, [expiresAt, setUnavailable]);
 
-  useEffect(() => {
-    // #region agent log
-    fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H6',location:'home/page.tsx:state-snapshot',message:'Home availability screen snapshot',data:{isAvailable,showBuilder,hasMeetCute:!!meetCute,nearbyCount:nearbyCount ?? -1,hasMsLeft:msLeft !== null},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
-  }, [isAvailable, showBuilder, meetCute, nearbyCount, msLeft]);
 
   const handleToggle = async () => {
     if (isAvailable) {

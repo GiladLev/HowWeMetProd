@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sI \"https://how-we-met-prod.vercel.app/auth/login\")",
+      "Bash(curl -sI \"https://how-we-met-prod.vercel.app/_next/static/\")",
+      "Bash(curl -s \"https://how-we-met-prod.vercel.app/\")",
+      "Bash(npx eslint:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "Read(//c/apps/expo/howwemet/**)"
+    ],
+    "additionalDirectories": [
+      "C:\\apps\\expo\\howwemet\\utils"
+    ]
+  }
+}

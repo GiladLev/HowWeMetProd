@@ -103,16 +103,10 @@ export default function Game10BlindDraw({
 
   useEffect(() => {
     if (!sharedStartedAt || submitted) return;
-    // #region agent log
-    fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H5',location:'Game10BlindDraw.tsx:countdown-sync-entry',message:'Game10 shared countdown sync effect entered',data:{hasSharedStartedAt:!!sharedStartedAt,submitted,blind,countdown},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
     const tick = () => {
       const elapsedMs = Date.now() - sharedStartedAt;
       const remaining = 3 - Math.floor(elapsedMs / 1000);
       if (remaining <= 0) {
-        // #region agent log
-        fetch('http://127.0.0.1:7632/ingest/e06a49b8-5b17-4017-9417-c5fa9e56cc49',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'cdaf8a'},body:JSON.stringify({sessionId:'cdaf8a',runId:'initial',hypothesisId:'H5',location:'Game10BlindDraw.tsx:countdown-finished',message:'Game10 countdown finished, enabling blind mode',data:{elapsedMs,remaining},timestamp:Date.now()})}).catch(()=>{});
-        // #endregion
         setCountdown(null);
         setBlind(true);
       } else {

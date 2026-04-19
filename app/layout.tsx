@@ -5,6 +5,7 @@ import { AuthGuard } from '../components/AuthGuard';
 import { RealtimeProvider } from '../components/RealtimeProvider';
 import { MatchPopup } from '../components/MatchPopup';
 import { LikePopup } from '../components/LikePopup';
+import { PushTokenBridge } from '../components/PushTokenBridge';
 
 export const metadata: Metadata = {
   title: 'HowWeMet',
@@ -27,6 +28,7 @@ export default function RootLayout({
             </div>
             <MatchPopup />
             <LikePopup />
+            <PushTokenBridge />
           </RealtimeProvider>
         </AuthGuard>
       </body>
